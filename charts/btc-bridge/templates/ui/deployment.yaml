@@ -11,13 +11,12 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "btc-bridge.selectorLabels" . | nindent 6 }}
+      {{- include "btc-bridge.ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         # Kubernetes recommended labels
         {{- include "btc-bridge.ui.labels" . | nindent 8 }}
-        # Isio required labels
         app: {{ .Values.ui.service | lower | quote }}
         version: {{ .Values.ui.version | quote }}
     {{- if .Values.ui.configMap }}

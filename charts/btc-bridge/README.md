@@ -1,6 +1,6 @@
 # btc-bridge
 
-![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.1.8](https://img.shields.io/badge/Version-0.1.8-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 Helm Chart for deploying the Apparatus BTC Bridge.
 
@@ -83,7 +83,7 @@ Kubernetes: `>=1.23.0-0`
 | backend.podSecurityContext.runAsUser | int | `1001` |  |
 | backend.podSecurityContext.seccompProfile.type | string | `"RuntimeDefault"` |  |
 | backend.podSecurityContext.supplementalGroups[0] | int | `0` |  |
-| backend.ports[0].name | string | `"https-svc"` |  |
+| backend.ports[0].name | string | `"http-svc"` |  |
 | backend.ports[0].port | int | `4000` |  |
 | backend.ports[0].targetPort | int | `4000` |  |
 | backend.probes.livenessProbe.httpGet.path | string | `"/"` |  |
@@ -139,7 +139,7 @@ Kubernetes: `>=1.23.0-0`
 | ui.podSecurityContext.runAsUser | int | `101` |  |
 | ui.podSecurityContext.seccompProfile.type | string | `"RuntimeDefault"` |  |
 | ui.podSecurityContext.supplementalGroups[0] | int | `101` |  |
-| ui.ports[0].name | string | `"https-svc"` |  |
+| ui.ports[0].name | string | `"http-svc"` |  |
 | ui.ports[0].port | int | `9999` |  |
 | ui.ports[0].targetPort | int | `9999` |  |
 | ui.probes.livenessProbe.httpGet.path | string | `"/healthz"` |  |

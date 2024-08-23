@@ -17,9 +17,8 @@ spec:
       labels:
         # Kubernetes recommended labels
         {{- include "btc-bridge.backend.labels" . | nindent 8 }}
-        # Isio required labels
-        app: {{ .Values.backend.service | lower | quote }}
-        version: {{ .Values.backend.version | quote }}
+        app: {{ .Values.service | lower | quote }}
+        version: {{ .Values.version | quote }}
     spec:
       {{- with .Values.backend.nodeSelector }}
       nodeSelector:

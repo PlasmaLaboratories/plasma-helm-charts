@@ -49,7 +49,7 @@ ui:
   # Ports must be named <protocol>[-<suffix>] to work with Istio.
   # Valid protocols are grpc, http, http2, https, mongo, mysql, redis, tcp, tls, udp
   ports:
-    - name: https-svc
+    - name: http-svc
       port: 9999
       targetPort: 9999
 
@@ -271,7 +271,7 @@ backend:
   # Ports must be named <protocol>[-<suffix>] to work with Istio.
   # Valid protocols are grpc, http, http2, https, mongo, mysql, redis, tcp, tls, udp
   ports:
-    - name: https-svc
+    - name: http-svc
       port: 4000
       targetPort: 4000
 
