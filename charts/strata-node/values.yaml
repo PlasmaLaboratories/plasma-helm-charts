@@ -1,0 +1,124 @@
+system: strata-node
+service: strata-node
+version: 1
+
+image:
+  repository: stratalab/strata-node
+  tag: ""
+  imagePullPolicy: Always
+
+command: # Optional
+args:
+  - --dataDir
+  - "/strata-node/data"
+  - --stakingDir
+  - "/strata-node/staking"
+
+env:
+  - name: _JAVA_OPTIONS
+    value: "-XX:MaxRAMPercentage=70.0 -XX:ActiveProcessorCount=4"
+
+nodeSelector: {}
+
+tolerations: []
+affinity: {}
+
+# node_pool: guaranteed-pool
+serviceAccount:
+  name: strata-node
+  create: true
+  automountToken: false
+
+replicaCount: 1
+maxUnavailable: 1
+
+serviceType: ClusterIP
+
+ports:
+  - name: grpc
+    port: 9084
+    targetPort: 9084
+  - name: tcp-p2p
+    port: 9085
+    targetPort: 9085
+  - name: http-metrics
+    port: 9095
+    targetPort: 9095
+
+# Resource settings (use Kubernetes syntax)
+# Optional
+resources:
+  requests:
+    memory: "3Gi"
+    cpu: "25m"
+  limits:
+    memory: "3Gi"
+    ephemeral-storage: "500Mi"
+
+podSecurityContext:
+  runAsUser: 1001
+  runAsGroup: 0
+  fsGroup: 0
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+networkPolicy:
+  enabled: false
+
+metrics:
+  enabled: false
+  scrapeTimeout: ""
+  service:
+    type: ClusterIP
+    servicePort: 9095
+    portName: http-metrics
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+    relabelings: []
+    metricRelabelings: []
+    selector: {}
+    scheme: ""
+    namespace: "" # "monitoring"
+
+# Probe settings (use Kubernetes syntax)
+# Optional
+probes:
+  startupProbe:
+    grpc:
+      port: 9084
+    failureThreshold: 30
+    timeoutSeconds: 20
+  readinessProbe:
+    timeoutSeconds: 20
+    grpc:
+      port: 9084
+  # livenessProbe:
+  #   initialDelaySeconds: 30
+  #   terminationGracePeriodSeconds: 60
+  #   timeoutSeconds: 20
+  #   grpc:
+  #     port: 9084
+
+configMap: # Optional
+  mountPath: /config/strata-node-config
+  fileName: custom-config.yaml
+  content: |
+    strata-node:
+      big-bang:
+        type: public
+        genesis-id: b_6D8mXdqjsGrJbnXf6PqfWQrdTfKr3U5nbLGJGyYVgjqs
+        source-path: https://raw.githubusercontent.com/Topl/Genesis_Testnets/main/testnet0/
+
+volume:
+  mountDirectory: /mnt/strata-node/
+  # GKE specific storage classes: standard, standard-rwo, premium-rwo
+  storageClass:
+  storageSize: 10Gi
