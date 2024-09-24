@@ -1,0 +1,98 @@
+system: strata-explorer
+service: strata-explorer
+version: 1
+
+image:
+  repository: stratalab/strata-explorer
+  tag:
+  imagePullPolicy: IfNotPresent
+
+serviceAccount:
+  name: strata-explorer
+  create: true
+  automountToken: false
+
+replicaCount: 1
+maxUnavailable: 1
+
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 5
+  targetAverageCpuUtilization: 80
+
+ports:
+  - name: https-svc
+    port: 9999
+    targetPort: 9999
+
+# Resource settings (use Kubernetes syntax)
+# Optional
+resources:
+  requests:
+    memory: "32Mi"
+    cpu: "200m"
+  limits:
+    memory: "500Mi"
+    cpu: "250m"
+    ephemeral-storage: "500Mi"
+
+podSecurityContext:
+  runAsUser: 101
+  runAsGroup: 101
+  fsGroup: 101
+  supplementalGroups: [101]
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+networkPolicy:
+  enabled: true
+
+probes:
+  livenessProbe:
+    initialDelaySeconds: 30
+    httpGet:
+      path: /healthz
+      port: 9999
+  readinessProbe:
+    timeoutSeconds: 10
+    httpGet:
+      path: /healthz
+      port: 9999
+
+configMap:
+  mountPath: /etc/nginx
+  fileName: nginx.conf
+  content: |
+    worker_processes  auto;
+    error_log  /tmp/nginx/error.log warn;
+    pid        /tmp/nginx/nginx.pid;
+    events {
+        worker_connections  1024;
+    }
+    http {
+        default_type  application/octet-stream;
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" '
+                          '"$http_user_agent" "$http_x_forwarded_for"';
+        access_log  /var/log/nginx/access.log  main;
+        sendfile        on;
+        #tcp_nopush     on;
+        keepalive_timeout  65;
+        #gzip  on;
+        include /etc/nginx/conf.d/*.conf;
+        server {
+          listen 9999;
+          root /usr/share/nginx/html;
+          location /healthz {
+            access_log          off;
+            return              200;
+          }
+        }
+    }
