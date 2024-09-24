@@ -1,0 +1,123 @@
+apiVersion: v1
+entries:
+  bitcoin-node:
+  - apiVersion: v2
+    appVersion: "23"
+    created: "2024-09-24T19:05:11.126294351Z"
+    description: A Helm chart for running a Bitcoin node.
+    digest: 447ddf2c615438e8b85e4412806e7e09c35a7a2af8d45d48fe4602c4dd57f60b
+    home: https://apparatus.live
+    icon: https://apparatus.live/wp-content/uploads/2024/03/cropped-Circle_Original-1.png
+    keywords:
+    - apparatus
+    - bitcoin
+    - blockchain
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: apparatus
+      url: https://github.com/Topl
+    name: bitcoin-node
+    sources:
+    - https://github.com/Topl/helm-charts
+    - https://topl.github.io/helm-charts
+    urls:
+    - https://github.com/StrataLab/strata-helm-charts/releases/download/bitcoin-node-0.1.5/bitcoin-node-0.1.5.tgz
+    version: 0.1.5
+  strata-explorer:
+  - apiVersion: v2
+    appVersion: 0.0.0-8187-60827f3f
+    created: "2024-09-24T19:05:11.389206175Z"
+    description: A Helm chart for Stratalab's blockchain explorer.
+    digest: cfef59a82439fdc19f543360343622ca9914e102b81f2c057c2bde32503f2e6d
+    home: https://www.stratalab.xyz/
+    icon: https://cdn.prod.website-files.com/66b0ed44de8f42c909c3a8fa/66b0f02b4ce32f4736add79c_Vector.png
+    keywords:
+    - strata
+    - stratalab
+    - node
+    - blockchain
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: stratalab
+      url: https://github.com/StrataLab
+    name: strata-explorer
+    sources:
+    - https://github.com/StrataLab/strata-helm-charts
+    - https://stratalab.github.io/helm-charts
+    urls:
+    - https://github.com/StrataLab/strata-helm-charts/releases/download/strata-explorer-0.1.0/strata-explorer-0.1.0.tgz
+    version: 0.1.0
+  strata-indexer:
+  - apiVersion: v2
+    appVersion: 0.0.0-8187-60827f3f
+    created: "2024-09-24T19:05:11.608870885Z"
+    description: A Helm chart for Stratalab's blockchain indexer.
+    digest: 3de46cde4829cd54731f1d397099d061e207e1ee2e25bc8e94fd0ac668c3ef22
+    home: https://www.stratalab.xyz/
+    icon: https://cdn.prod.website-files.com/66b0ed44de8f42c909c3a8fa/66b0f02b4ce32f4736add79c_Vector.png
+    keywords:
+    - strata
+    - stratalab
+    - node
+    - grpc
+    - blockchain
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: stratalab
+      url: https://github.com/StrataLab
+    name: strata-indexer
+    sources:
+    - https://github.com/StrataLab/strata-helm-charts
+    - https://stratalab.github.io/helm-charts
+    urls:
+    - https://github.com/StrataLab/strata-helm-charts/releases/download/strata-indexer-0.1.0/strata-indexer-0.1.0.tgz
+    version: 0.1.0
+  strata-node:
+  - apiVersion: v2
+    appVersion: 0.0.0-8187-60827f3f
+    created: "2024-09-24T19:05:11.828710904Z"
+    description: A Helm chart for Stratalab's Node, a Bitcoin settlement solution.
+    digest: 1ba210fce26566bd9e22ca710bebc4d5c4405dcbb19ef4652e54ba837e50fbcb
+    home: https://www.stratalab.xyz/
+    icon: https://cdn.prod.website-files.com/66b0ed44de8f42c909c3a8fa/66b0f02b4ce32f4736add79c_Vector.png
+    keywords:
+    - strata
+    - stratalab
+    - node
+    - blockchain
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: stratalab
+      url: https://github.com/StrataLab
+    name: strata-node
+    sources:
+    - https://github.com/StrataLab/strata-helm-charts
+    - https://stratalab.github.io/helm-charts
+    urls:
+    - https://github.com/StrataLab/strata-helm-charts/releases/download/strata-node-0.1.0/strata-node-0.1.0.tgz
+    version: 0.1.0
+  strata-strata-btc-bridge:
+  - apiVersion: v2
+    appVersion: 0.0.0-8187-60827f3f
+    created: "2024-09-24T19:05:12.053279039Z"
+    description: A Helm chart for Stratalab's BTC Bridge.
+    digest: 79e8f3f6d8fd89480ef5b8659dbe2faed052cf074140389b03f0ea9a81d4f647
+    home: https://www.stratalab.xyz/
+    icon: https://cdn.prod.website-files.com/66b0ed44de8f42c909c3a8fa/66b0f02b4ce32f4736add79c_Vector.png
+    keywords:
+    - strata
+    - stratalab
+    - node
+    - blockchain
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: stratalab
+      url: https://github.com/StrataLab
+    name: strata-strata-btc-bridge
+    sources:
+    - https://github.com/StrataLab/strata-helm-charts
+    - https://stratalab.github.io/helm-charts
+    urls:
+    - https://github.com/StrataLab/strata-helm-charts/releases/download/strata-strata-btc-bridge-0.1.0/strata-strata-btc-bridge-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-09-24T19:05:12.053288146Z"
