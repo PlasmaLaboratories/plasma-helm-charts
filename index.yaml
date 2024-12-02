@@ -23,6 +23,30 @@ entries:
     urls:
     - https://github.com/StrataLab/strata-helm-charts/releases/download/bitcoin-node-0.1.5/bitcoin-node-0.1.5.tgz
     version: 0.1.5
+  plasma-node:
+  - apiVersion: v2
+    appVersion: 0.1.3
+    created: "2024-12-02T22:52:06.383891091Z"
+    description: A Helm chart for Plasma's blockchain node.
+    digest: 6c170c98538c9a2ed1b78430a9fb9ba42e5f4298869233779a2a4802c320407e
+    home: https://www.plasma.to/
+    icon: https://framerusercontent.com/images/PrrklsGFWPyLuIZIXzP93efFUdI.png
+    keywords:
+    - plasma
+    - plasmalab
+    - node
+    - blockchain
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: plasmalab
+      url: https://github.com/PlasmaLaboratories
+    name: plasma-node
+    sources:
+    - https://github.com/PlasmaLaboratories/plasma-helm-charts
+    - https://plasmalaboratories.github.io/helm-charts
+    urls:
+    - https://github.com/PlasmaLaboratories/plasma-helm-charts/releases/download/plasma-node-0.1.0/plasma-node-0.1.0.tgz
+    version: 0.1.0
   strata-explorer:
   - apiVersion: v2
     appVersion: 0.0.0-8187-60827f3f
@@ -120,4 +144,4 @@ entries:
     urls:
     - https://github.com/StrataLab/strata-helm-charts/releases/download/strata-strata-btc-bridge-0.1.0/strata-strata-btc-bridge-0.1.0.tgz
     version: 0.1.0
-generated: "2024-09-24T19:05:12.053288146Z"
+generated: "2024-12-02T22:52:06.38390144Z"
