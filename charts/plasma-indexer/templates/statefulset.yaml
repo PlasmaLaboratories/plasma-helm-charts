@@ -54,6 +54,8 @@ spec:
             - "{{ .Values.nodeRpc.port }}"
             - "--node-rpc-tls"
             - "{{ .Values.nodeRpc.tls }}"
+            - "--ttl-cache-check"
+            - "1 minutes"
           ports:
           {{- range .Values.ports }}
             - name: {{ .name | quote }}
