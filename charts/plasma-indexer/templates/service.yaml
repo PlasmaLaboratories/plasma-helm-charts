@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.service | lower | quote }}
   labels:
-    {{- include "strata-indexer.labels" . | nindent 4 }}
+    {{- include "plasma-indexer.labels" . | nindent 4 }}
   namespace: {{ .Release.Namespace | quote }}
 spec:
   type: {{ .Values.serviceType | quote }}
@@ -15,4 +15,5 @@ spec:
       protocol: TCP
 {{- end }}
   selector:
-    app: {{ .Values.service | lower | quote }}
+    {{- include "plasma-indexer.selectorLabels" . | nindent 4 }}
+

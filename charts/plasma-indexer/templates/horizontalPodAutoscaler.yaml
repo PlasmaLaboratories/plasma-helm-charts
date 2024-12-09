@@ -4,7 +4,7 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Values.service | lower | quote }}
   labels:
-    {{- include "strata-indexer.labels" . | nindent 4 }}
+    {{- include "plasma-indexer.labels" . | nindent 4 }}
   namespace: {{ .Release.Namespace | quote }}
 spec:
   scaleTargetRef:

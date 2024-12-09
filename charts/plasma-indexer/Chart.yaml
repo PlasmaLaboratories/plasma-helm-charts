@@ -1,0 +1,22 @@
+apiVersion: v2
+appVersion: "0.1.4-9-af9053bb"
+kubeVersion: ">=1.23.0-0"
+version: 0.1.0
+
+name: plasma-indexer
+description: A Helm chart for Plasma's blockchain indexer.
+
+home: https://www.plasma.to/
+icon: https://framerusercontent.com/images/PrrklsGFWPyLuIZIXzP93efFUdI.png
+sources:
+  - https://github.com/PlasmaLaboratories/plasma-helm-charts
+  - https://plasmalaboratories.github.io/helm-charts
+keywords:
+  - plasma
+  - plasmalab
+  - indexer
+  - blockchain
+maintainers:
+  - name: plasmalab
+    url: https://github.com/PlasmaLaboratories
+

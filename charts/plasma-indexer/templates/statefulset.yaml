@@ -3,24 +3,21 @@ kind: StatefulSet
 metadata:
   name: {{ .Values.service | lower | quote }}
   labels:
-    {{- include "strata-indexer.labels" . | nindent 4 }}
+    {{- include "plasma-indexer.labels" . | nindent 4 }}
   namespace: {{ .Release.Namespace | quote }}
 spec:
   serviceName: {{ .Values.service | lower | quote }}
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "strata-indexer.selectorLabels" . | nindent 6 }}
+      {{- include "plasma-indexer.selectorLabels" . | nindent 6 }}
   updateStrategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
         # Kubernetes recommended labels
-        {{- include "strata-indexer.labels" . | nindent 8 }}
-        # Isio required labels
-        app: {{ .Values.service | lower | quote }}
-        version: {{ .Values.version | quote }}
+        {{- include "plasma-indexer.labels" . | nindent 8 }}
     spec:
       nodeSelector: 
         {{- toYaml .Values.nodeSelector | nindent 8 }}
@@ -37,22 +34,28 @@ spec:
             - name: ORIENT_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ template "strata-indexer.dbSecretName" . }}
+                  name: {{ template "plasma-indexer.dbSecretName" . }}
                   key: db-password
             {{- toYaml .Values.env | nindent 12 }}
           args:
-            - "--orientDbPassword"
+            - "--orient-db-password"
             - "$(ORIENT_DB_PASSWORD)"
-            - "--dataDir"
-            - "/strata-indexer/orient-db"
-            - "--enableReplicator"
+            - "--data-dir"
+            - "/plasma-indexer/orient-db"
+            - "--enable-replicator"
             - "{{ .Values.replicator.enable }}"
-            - "--nodeRpcHost"
+            - "--rpc-bind-host"
+            - "{{ .Values.rpc.host }}"
+            - "--rpc-bind-port"
+            - "{{ .Values.rpc.port }}"
+            - "--node-rpc-host"
             - "{{ .Values.nodeRpc.host }}"
-            - "--nodeRpcPort"
+            - "--node-rpc-port"
             - "{{ .Values.nodeRpc.port }}"
-            - "--nodeRpcTls"
+            - "--node-rpc-tls"
             - "{{ .Values.nodeRpc.tls }}"
+            - "--ttl-cache-check"
+            - "1 minutes"
           ports:
           {{- range .Values.ports }}
             - name: {{ .name | quote }}
@@ -68,7 +71,7 @@ spec:
           {{- end }}
           volumeMounts:
             - name: {{ (print .Values.service "-pv") | quote }}
-              mountPath: "/strata-indexer"
+              mountPath: "/plasma-indexer"
             - name: tmp
               mountPath: /tmp
       volumes:

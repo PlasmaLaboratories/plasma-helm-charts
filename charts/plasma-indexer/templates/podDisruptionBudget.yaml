@@ -3,9 +3,10 @@ kind: PodDisruptionBudget
 metadata:
   name: {{ .Values.service | lower | quote }}
   labels:
-    {{- include "strata-indexer.labels" . | nindent 4 }}
+    {{- include "plasma-indexer.labels" . | nindent 4 }}
 spec:
   maxUnavailable: {{ .Values.maxUnavailable }}
-  selector:
+  selector: 
     matchLabels:
-      {{- include "strata-indexer.selectorLabels" . | nindent 6 }}
+      {{- include "plasma-indexer.selectorLabels" . | nindent 6 }}
+
