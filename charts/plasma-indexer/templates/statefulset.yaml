@@ -35,7 +35,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ template "plasma-indexer.dbSecretName" . }}
-                  key: db-password
+                  key: db_password
             {{- toYaml .Values.env | nindent 12 }}
           args:
             - "--orient-db-password"
