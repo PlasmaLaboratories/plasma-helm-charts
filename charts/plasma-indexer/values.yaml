@@ -102,6 +102,10 @@ volume:
   storageClass:
   storageSize: 10Gi
 
+rpc:
+  host: "0.0.0.0"
+  port: 9084
+
 # Configuration of an _external_ strata-node Node
 nodeRpc:
   host: "localhost"
