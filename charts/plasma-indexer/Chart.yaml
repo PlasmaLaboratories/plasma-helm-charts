@@ -1,22 +1,22 @@
 apiVersion: v2
-appVersion: "0.0.0-8187-60827f3f"
+appVersion: "0.1.4-9-af9053bb"
 kubeVersion: ">=1.23.0-0"
 version: 0.1.0
 
-name: strata-indexer
-description: A Helm chart for Stratalab's blockchain indexer.
+name: plasma-indexer
+description: A Helm chart for Plasma's blockchain indexer.
 
-home: https://www.stratalab.xyz/
-icon: https://cdn.prod.website-files.com/66b0ed44de8f42c909c3a8fa/66b0f02b4ce32f4736add79c_Vector.png
+home: https://www.plasma.to/
+icon: https://framerusercontent.com/images/PrrklsGFWPyLuIZIXzP93efFUdI.png
 sources:
-  - https://github.com/StrataLab/strata-helm-charts
-  - https://stratalab.github.io/helm-charts
+  - https://github.com/PlasmaLaboratories/plasma-helm-charts
+  - https://plasmalaboratories.github.io/helm-charts
 keywords:
-  - strata
-  - stratalab
-  - node
-  - grpc
+  - plasma
+  - plasmalab
+  - indexer
   - blockchain
 maintainers:
-  - name: stratalab
-    url: https://github.com/StrataLab
+  - name: plasmalab
+    url: https://github.com/PlasmaLaboratories
+
